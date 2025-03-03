@@ -35,7 +35,8 @@
 
 ---
 
-🔥 **Advanced Challenge:** Convert one of the above challenges into a **Higher-Order Component (HOC)** or **Render Props** pattern to make it even more reusable.  
+🔥 **Advanced Challenge:** Convert one of the above challenges into a **Higher-Order Component (HOC)** or **Render Props** pattern to make it even more reusable. 
+ 
 🔴 **Advanced Challenges**
 
 #### **6️⃣ Configurable Card Component**
