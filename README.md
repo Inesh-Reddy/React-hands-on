@@ -6,7 +6,6 @@
 ✅ **Bonus:** Display an "Online" badge dynamically when `isOnline` is `true`.  
 
 ---
-
 #### **Challenge 2: Dynamic Alert Component**  
 📌 **Scenario:** Your app needs a reusable alert system. Create an **AlertBox** that accepts the following props:  
 ✅ **Props:** `message`, `type` (`success`, `error`, `warning`), and `dismissible`.  
