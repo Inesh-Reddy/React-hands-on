@@ -3,10 +3,9 @@ export default function Header(){
         <div>
             <h1>DeFi Dashboard</h1>
             <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Services</li>
-                <li>Contact</li>
+                <li>dashboard</li>
+                <li>Portfolio</li>
+                <li>Settings</li>
             </ul>
         </div>
     )
