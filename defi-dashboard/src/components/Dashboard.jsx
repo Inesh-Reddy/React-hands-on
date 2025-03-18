@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 export default function Dashboard() {
   const [view, setView] = useState("list");
   const [data, setData] = useState([]);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,8 +14,12 @@ export default function Dashboard() {
         );
         const result = await response.json();
         setData(result);
+        setError("");
       } catch (error) {
         console.error("Error fetching data:", error);
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -25,17 +31,34 @@ export default function Dashboard() {
   return (
     <div>
       <h3>Welcome to DeFi Dashboard.</h3> <br />
-      <div>
-        {view === "list" ? (
-          <div>
-            {top10.map((item) => (
-              <div key={item.id}>{item.name}</div>
-            ))}
-          </div>
-        ) : (
-          <div>{JSON.stringify(data)}</div>
-        )}
-      </div>
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : error ? (
+        <div>Error: {JSON.stringify(error)}</div>
+      ) : (
+        <div>
+          {view === "list" ? (
+            <div>
+              {top10.map((item) => (
+                <div
+                  key={item.id}
+                  style={{
+                    width: 200,
+                    height: 50,
+                    border: "grey 1px solid",
+                    borderRadius: "5px",
+                    fontSize: 20,
+                  }}
+                >
+                  {item.name + " : " + item.current_price + "$"}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div>{JSON.stringify(data)}</div>
+          )}
+        </div>
+      )}
       <button
         style={{
           width: 200,
