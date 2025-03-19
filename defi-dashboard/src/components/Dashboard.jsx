@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { CryptoCard } from "./CryptoCard";
 
 export default function Dashboard() {
   const [view, setView] = useState("list");
@@ -29,52 +30,123 @@ export default function Dashboard() {
   let top10 = data.slice(0, 10);
 
   return (
-    <div>
-      <h3>Welcome to DeFi Dashboard.</h3> <br />
+    <div
+      style={{
+        padding: "20px",
+        maxWidth: "1200px",
+        margin: "0 auto",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      <h3
+        style={{
+          fontSize: "24px",
+          color: "#333",
+          textAlign: "center",
+          marginBottom: "20px",
+        }}
+      >
+        Welcome to DeFi Dashboard
+      </h3>
+
       {isLoading ? (
-        <h1>Loading...</h1>
+        <h1
+          style={{
+            fontSize: "28px",
+            color: "#666",
+            textAlign: "center",
+          }}
+        >
+          Loading...
+        </h1>
       ) : error ? (
-        <div>Error: {JSON.stringify(error)}</div>
+        <div
+          style={{
+            color: "red",
+            textAlign: "center",
+            fontSize: "18px",
+            padding: "10px",
+            border: "1px solid red",
+            borderRadius: "5px",
+          }}
+        >
+          Error: {error}
+        </div>
       ) : (
         <div>
           {view === "list" ? (
-            <div>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+                gap: "20px",
+              }}
+            >
               {top10.map((item) => (
-                <div
+                <CryptoCard
                   key={item.id}
-                  style={{
-                    width: 200,
-                    height: 50,
-                    border: "grey 1px solid",
-                    borderRadius: "5px",
-                    fontSize: 20,
-                  }}
-                >
-                  {item.name + " : " + item.current_price + "$"}
-                </div>
+                  name={item.name}
+                  price={item.current_price}
+                  change={item.price_change_24h}
+                />
               ))}
             </div>
           ) : (
-            <div>{JSON.stringify(data)}</div>
+            <div
+              style={{
+                backgroundColor: "#f5f5f5",
+                padding: "20px",
+                borderRadius: "5px",
+                fontSize: "16px",
+                overflowX: "auto",
+              }}
+            >
+              {JSON.stringify(data)}
+            </div>
           )}
         </div>
       )}
+
       <button
         style={{
-          width: 200,
-          height: 100,
-          border: "grey 1px solid",
+          display: "block",
+          width: "200px",
+          height: "50px",
+          margin: "20px auto",
+          border: "1px solid grey",
           borderRadius: "5px",
-          fontSize: 20,
+          fontSize: "18px",
+          fontWeight: "bold",
+          color: "#fff",
           backgroundColor: view === "list" ? "#0B666A" : "#C30E59",
+          cursor: "pointer",
+          transition: "background-color 0.3s",
         }}
         onClick={() => {
-          setView(view === "list" ? "Chart" : "list");
+          setView(view === "list" ? "chart" : "list");
+        }}
+        onMouseOver={(e) =>
+          (e.target.style.backgroundColor =
+            view === "list" ? "#099195" : "#D61F6A")
+        }
+        onMouseOut={(e) =>
+          (e.target.style.backgroundColor =
+            view === "list" ? "#0B666A" : "#C30E59")
+        }
+      >
+        {view === "list" ? "Switch to Chart" : "Switch to List"}
+      </button>
+
+      <p
+        style={{
+          textAlign: "center",
+          color: "#666",
+          fontSize: "14px",
+          marginTop: "10px",
         }}
       >
-        {view}
-      </button>
-      <p>Here you will see real-time crypto data and manage your portfolio.</p>
+        Here you will see real-time crypto data and manage your portfolio.
+      </p>
     </div>
   );
 }
