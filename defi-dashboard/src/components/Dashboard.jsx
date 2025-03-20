@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CryptoCard } from "./CryptoCard";
+import { CardContainer } from "./CardContainer";
 
 export default function Dashboard() {
   const [view, setView] = useState("list");
@@ -75,13 +76,7 @@ export default function Dashboard() {
       ) : (
         <div>
           {view === "list" ? (
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-                gap: "20px",
-              }}
-            >
+            <CardContainer>
               {top10.map((item) => (
                 <CryptoCard
                   key={item.id}
@@ -90,7 +85,7 @@ export default function Dashboard() {
                   change={item.price_change_24h}
                 />
               ))}
-            </div>
+            </CardContainer>
           ) : (
             <div
               style={{
