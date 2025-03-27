@@ -1,0 +1,17 @@
+.todo-item-container {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  color: #040202;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 5px 0;
+}
+
+.todo-item-container p {
+  margin: 0;
+  padding-left: 10px;
+  float: 1;
+}
