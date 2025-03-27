@@ -21,7 +21,6 @@ function App() {
     }
   };
 
-  // Geometric weather icons in white
   const getWeatherIcon = () => {
     if (!condition) return null;
     const cond = condition.toLowerCase();
@@ -40,7 +39,6 @@ function App() {
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         >
-          {/* Geometric sun rays */}
           {[...Array(8)].map((_, i) => (
             <div
               key={i}
@@ -73,7 +71,6 @@ function App() {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          {/* Geometric rain lines */}
           <div
             style={{
               position: "absolute",
@@ -107,14 +104,13 @@ function App() {
             background: "transparent",
             border: "2px solid #FFFFFF",
             clipPath:
-              "polygon(50% 0%, 100% 29%, 79% 79%, 29% 100%, 0% 71%, 21% 21%)", // Hexagon
+              "polygon(50% 0%, 100% 29%, 79% 79%, 29% 100%, 0% 71%, 21% 21%)",
             position: "relative",
             margin: "0 auto",
           }}
           animate={{ rotate: 360 }}
           transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
         >
-          {/* Geometric snowflake lines */}
           <div
             style={{
               position: "absolute",
@@ -163,7 +159,6 @@ function App() {
           animate={{ x: [0, 10, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
-          {/* Geometric cloud (overlapping circles) */}
           <div
             style={{
               position: "absolute",
@@ -205,7 +200,6 @@ function App() {
     }
   };
 
-  // Weather atmosphere effect (geometric elements)
   const getWeatherAtmosphere = () => {
     if (!condition) return null;
     const cond = condition.toLowerCase();
@@ -308,14 +302,14 @@ function App() {
     <div
       style={{
         minHeight: "100vh",
-        background: "#000000",
+        backgroundImage:
+          "radial-gradient(circle, #060606, #060606, #070606, #070606, #070605, #1c1b1a, #2c2b2b, #3e3d3d, #696868, #979797, #c8c8c8, #fcfcfc)",
         fontFamily: "'Courier New', monospace",
         color: "#FFFFFF",
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Background Geometric Elements */}
       <div
         style={{
           position: "absolute",
@@ -326,7 +320,6 @@ function App() {
           pointerEvents: "none",
         }}
       >
-        {/* Diagonal Lines */}
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={i}
@@ -338,13 +331,12 @@ function App() {
               transform: "rotate(45deg)",
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              opacity: 0.2,
+              opacity: 0.3,
             }}
             animate={{ rotate: 45 }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
           />
         ))}
-        {/* Circles */}
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={i}
@@ -357,7 +349,7 @@ function App() {
               borderRadius: "50%",
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              opacity: 0.1,
+              opacity: 0.2,
             }}
             animate={{ scale: [1, 1.2, 1] }}
             transition={{
@@ -368,7 +360,6 @@ function App() {
             }}
           />
         ))}
-        {/* Triangles */}
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={i}
@@ -381,7 +372,7 @@ function App() {
               borderBottom: "20px solid #FFFFFF",
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              opacity: 0.1,
+              opacity: 0.2,
             }}
             animate={{ rotate: 360 }}
             transition={{
@@ -394,7 +385,6 @@ function App() {
         ))}
       </div>
 
-      {/* Weather Atmosphere Effect */}
       <div
         style={{
           position: "absolute",
@@ -408,7 +398,6 @@ function App() {
         {getWeatherAtmosphere()}
       </div>
 
-      {/* Horizontal and Vertical Lines for Grid (White) */}
       <div
         style={{
           position: "absolute",
@@ -419,7 +408,6 @@ function App() {
           pointerEvents: "none",
         }}
       >
-        {/* Horizontal Lines */}
         <div
           style={{
             position: "absolute",
@@ -438,7 +426,6 @@ function App() {
             bottom: "60px",
           }}
         />
-        {/* Vertical Lines */}
         <div
           style={{
             position: "absolute",
@@ -450,14 +437,13 @@ function App() {
         />
       </div>
 
-      {/* Header */}
       <header
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           padding: "20px 40px",
-          background: "#000000",
+          background: "transparent",
         }}
       >
         <h1
@@ -473,7 +459,6 @@ function App() {
         </h1>
       </header>
 
-      {/* Main Content */}
       <main
         style={{
           display: "flex",
@@ -485,7 +470,6 @@ function App() {
           position: "relative",
         }}
       >
-        {/* Left Side: Weather "Product" */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -495,7 +479,7 @@ function App() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            background: "#000000",
+            background: "rgba(0, 0, 0, 0.5)",
             border: "1px solid #FFFFFF",
             padding: "40px",
             maxWidth: "400px",
@@ -558,7 +542,7 @@ function App() {
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="ENTER A PLACE (E.G., LONDON)"
               style={{
-                backgroundColor: "#000000",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
                 borderRadius: "0",
               }}
               sx={{
@@ -607,7 +591,6 @@ function App() {
           </div>
         </motion.div>
 
-        {/* Right Side: Minimalist Geometric Weather Icon with Background Image */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -793,7 +776,6 @@ function App() {
           )}
         </motion.div>
 
-        {/* Minimalist Black-and-White Weather Image Background */}
         {condition && (
           <motion.div
             style={{
@@ -803,7 +785,7 @@ function App() {
               transform: "translate(-50%, -50%)",
               width: "200px",
               height: "200px",
-              opacity: 0.1,
+              opacity: 0.15,
               zIndex: 0,
             }}
             animate={{ rotate: 360 }}
@@ -858,7 +840,7 @@ function App() {
                       borderBottom: "40px solid #FFFFFF",
                       top: `${i * 40}px`,
                       left: `${i * 30}px`,
-                      opacity: 0.2,
+                      opacity: 0.3,
                     }}
                   />
                 ))}
@@ -886,7 +868,7 @@ function App() {
                         "polygon(50% 0%, 100% 29%, 79% 79%, 29% 100%, 0% 71%, 21% 21%)",
                       top: `${i * 60}px`,
                       left: `${i * 40}px`,
-                      opacity: 0.2,
+                      opacity: 0.3,
                     }}
                   />
                 ))}
@@ -911,7 +893,7 @@ function App() {
                     borderRadius: "50%",
                     top: "20px",
                     left: "20px",
-                    opacity: 0.2,
+                    opacity: 0.3,
                   }}
                 />
                 <div
@@ -924,7 +906,7 @@ function App() {
                     borderRadius: "50%",
                     top: "20px",
                     left: "80px",
-                    opacity: 0.2,
+                    opacity: 0.3,
                   }}
                 />
                 <div
@@ -937,7 +919,7 @@ function App() {
                     borderRadius: "50%",
                     top: "60px",
                     left: "50px",
-                    opacity: 0.2,
+                    opacity: 0.3,
                   }}
                 />
               </div>
@@ -946,12 +928,11 @@ function App() {
         )}
       </main>
 
-      {/* Footer */}
       <Footer
         style={{
           textAlign: "center",
           padding: "20px",
-          background: "#000000",
+          background: "transparent",
           fontSize: "14px",
           color: "#FFFFFF",
           fontWeight: "normal",
