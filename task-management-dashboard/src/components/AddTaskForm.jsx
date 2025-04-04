@@ -4,7 +4,7 @@ const AddTaskForm = ({ onAddTask }) => {
   const [newTask, setNewTask] = useState({
     id: Date.now(),
     title: "",
-    isCompleted: false,
+    isCompleted: true,
   });
 
   const onChangeHandler = (e) => {
